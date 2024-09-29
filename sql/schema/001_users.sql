@@ -1,0 +1,12 @@
+-- +goose Up
+CREATE TABLE users (
+    id UUID PRIMARY KEY,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    hashed_password TEXT NOT NULL,
+    is_chirpy_red BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+-- +goose Down
+DROP TABLE users;
